@@ -10,15 +10,24 @@ public class Mage {
         this.listOfSkills = listOfSkills;
     }
 
-    public void addSkill(){
+    public void addSkill(Skill skilltoadd){
+        listOfSkills.add(skilltoadd);
 
     }
-    public boolean decreaMana(){
+    public boolean decreaMana(int value){
+        if(mana-value<=0){
+            return false;
+        }else{
+            mana-=value;
+            return true;
+        }
 
     }
-    public void increaMana(){
+    public void increaMana(int value){
+        this.mana+=value;
 
     }
+    //TODO
     public void refillMana(){
 
     }

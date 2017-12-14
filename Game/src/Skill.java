@@ -20,19 +20,30 @@ public class Skill {
         this.damageMin = damageMin;
     }
 
-    public void increaMax(){
+    public void increaMax(int value){
+        this.damageMax+=value;
 
     }
-    public void increaMin(){
+    public void increaMin(int value){
+        this.damageMin+=value;
 
     }
-    public void increaCost(){
+    public void increaCost(int value){
+        this.cost+=value;
 
     }
+
+    //TODO Förslag på level up
     public void levelUp(){
+        increaCost(10);
+        increaMax(50);
+        increaMin(50);
+        increaRange(5);
+        this.level+=1;
 
     }
-    public void increaRange(){
+    public void increaRange(int value){
+        this.range+=value;
 
     }
 }

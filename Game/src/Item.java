@@ -6,6 +6,8 @@ public class Item {
     private int rarity;
     private int price;
 
+
+
     public Item(String name, int ID, int levelRequirement, int rarity, int price) {
         this.name = name;
         this.ID = ID;
@@ -14,15 +16,28 @@ public class Item {
         this.price = price;
     }
 
-    public void increaPrice(){
+    public void increaPrice(int increment){
+        this.price+=increment;
 
     }
 
-    public void decreaPrice(){
+    public void decreaPrice(int decrement){
+        if(this.price-decrement<=0){
+            return;
+        }
+        else{
+            this.price-=decrement;
+
+        }
 
     }
-
+    //TODO
     public void passive(){
 
     }
+
+    public int getLevelRequirement() {
+        return levelRequirement;
+    }
+
 }

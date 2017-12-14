@@ -3,10 +3,12 @@ import java.util.ArrayList;
 public class Mage {
 
     private int mana;
+    private int maxMana;
     private ArrayList<Skill> listOfSkills;
 
-    public Mage(int mana, ArrayList<Skill> listOfSkills) {
-        this.mana = mana;
+    public Mage(int maxMana, ArrayList<Skill> listOfSkills) {
+        this.maxMana = maxMana;
+        this.mana = maxMana;
         this.listOfSkills = listOfSkills;
     }
 
@@ -14,6 +16,8 @@ public class Mage {
         listOfSkills.add(skilltoadd);
 
     }
+
+    // TODO Ska den inte kunna bli 0?
     public boolean decreaMana(int value){
         if(mana-value<=0){
             return false;
@@ -24,11 +28,15 @@ public class Mage {
 
     }
     public void increaMana(int value){
-        this.mana+=value;
+        this.maxMana+=value;
 
     }
     //TODO
-    public void refillMana(){
-
+    public void refillMana(int amountToRefill){
+        if((this.mana += amountToRefill) > maxMana){
+            this.mana = maxMana;
+        }else{
+            this.mana += amountToRefill;
+        }
     }
 }

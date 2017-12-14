@@ -2,12 +2,15 @@ import java.util.ArrayList;
 
 public class Warrior extends Character {
 
+    private int maxStamina;
     private int stamina;
     private ArrayList<Skill> listOfSkills;
 
-    public Warrior(String name, int level, int experience, int armour, int money, int hp, char gender, String race, ArrayList<Item> listOfItems, ArrayList<Item> listOfEquipedItems, int stamina, ArrayList<Skill> listOfSkills) {
+    public Warrior(String name, int level, int experience, int armour, int money, int hp, char gender, String race, ArrayList<Item> listOfItems, ArrayList<Item> listOfEquipedItems, int maxStamina, ArrayList<Skill> listOfSkills) {
         super(name, level, experience, armour, money, hp, gender, race, listOfItems, listOfEquipedItems);
-        this.stamina = stamina;
+
+        this.maxStamina = maxStamina;
+        this.stamina = this.maxStamina;
         this.listOfSkills = listOfSkills;
     }
 
@@ -25,11 +28,16 @@ public class Warrior extends Character {
 
     }
     public void increaStamina(int value){
-        stamina+=value;
+        maxStamina+=value;
 
     }
-    //TODO
-    public void refillStamina(){
+
+    public void refillStamina(int amountToRefill){
+        if((this.stamina += amountToRefill) > maxStamina){
+            this.stamina = maxStamina;
+        }else{
+            this.stamina += amountToRefill;
+        }
 
     }
 }

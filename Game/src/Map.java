@@ -8,18 +8,23 @@ public class Map {
     private ArrayList<Object> listOfObjects;
     private ArrayList<MovableObject> listOfMovableObjects;
 
-    public Map(int x, int y, int z, ArrayList<Object> listOfObjects, ArrayList<MovableObject> listOfMovableObjects) {
+    public Map(int x, int y, int z) {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.listOfObjects = listOfObjects;
-        this.listOfMovableObjects = listOfMovableObjects;
+        this.listOfObjects = new ArrayList<>();
+        this.listOfMovableObjects = new ArrayList<>();
     }
 
-    public void addMoveableObject(){
+    public void addMoveableObject(String name, int x, int y, int z, int areaRange, int speed, Character charToAdd){
+        MovableObject newObject = new MovableObject(name, x, y, z, areaRange, speed, charToAdd);
+        listOfMovableObjects.add(newObject);
 
     }
+
     public void addObject(){
+        
+
 
     }
 }

@@ -7,6 +7,7 @@ public class Character {
     private int experience;
     private int armour;
     private int money;
+    private int maxHp;
     private int hp;
     private char gender;
     private String race;
@@ -14,17 +15,19 @@ public class Character {
     private ArrayList<Item> listOfItems;
     private ArrayList<Item> listOfEquipedItems;
 
-    public Character(String name, int level, int experience, int armour, int money, int hp, char gender, String race, ArrayList<Item> listOfItems, ArrayList<Item> listOfEquipedItems) {
+    public Character(String name, int level, int experience, int armour, int money, int maxHp, char gender, String race) {
         this.name = name;
         this.level = level;
         this.experience = experience;
         this.armour = armour;
         this.money = money;
-        this.hp = hp;
+
+        this.maxHp = maxHp;
+        this.hp = this.maxHp;
         this.gender = gender;
         this.race = race;
-        this.listOfItems = listOfItems;
-        this.listOfEquipedItems = listOfEquipedItems;
+        this.listOfItems = new ArrayList<>();
+        this.listOfEquipedItems = new ArrayList<>();
     }
 
 
@@ -47,6 +50,10 @@ public class Character {
 
             expleft = experience + expGain - 10000;
             gainLevel();
+            // TODO Ska vi lägga tillbaka det som är över 10000 exp på experience. T.ex. om man har 8000 exp och tjänar 4000
+            // TODO Ska man då ha 2000 efter att man levlat upp? Då borde vi lägga till koden nedan.
+
+            // TODO this.experience = expleft;
         }
         else{
             this.experience+=expGain;
@@ -55,8 +62,8 @@ public class Character {
     }
 
 //Add one item to the inventory
-    public void addItem(Item itemtoadd){
-        this.listOfItems.add(itemtoadd);
+    public void addItem(Item itemToAdd){
+        this.listOfItems.add(itemToAdd);
 
     }
 
@@ -67,15 +74,16 @@ public class Character {
 //Checks If the item is in the inventory and the character dont have to same type equipped and if the levelREQ is reached it adds it to the equipped list
 //TODO visst ska man använda == när vi jämnför här? Ska vi ha ITEM type så man inte kan equippa samma itemTYPE?
 
-    public void equipItem(Item itemtoequip){
-        int itemlevel=itemtoequip.getLevelRequirement();
+    public void equipItem(Item itemToEquip){
+        int itemlevel=itemToEquip.getLevelRequirement();
         if (itemlevel<this.level){
             return;
         }
 
+        //TODO Varför har vi denna forloop? Om jag fattar rätt så kör den ju bara funktionen igen. Blir en infinityloop.
         for(int i=0;i<listOfItems.size();i++){
-            if(listOfItems.get(i)==itemtoequip){
-                equipItem(itemtoequip);
+            if(listOfItems.get(i)==itemToEquip){
+                equipItem(itemToEquip);
                 return;
 
             }
@@ -94,7 +102,7 @@ public class Character {
         if(this.money-decrease<0){
             return false;
         }
-        else;{
+        else{
             this.money-=decrease;
             return true;
         }
@@ -103,8 +111,8 @@ public class Character {
 
 //Increase hp of your character
     //TODO Har vi något max hp? och hur markerar vi att någon är död?
-    public void increaHP(int increase){
-        this.hp+=increase;
+    public void increaMaxHP(int increase){
+        this.maxHp+=increase;
 
     }
 
@@ -140,11 +148,18 @@ public class Character {
 
 //Takes damage
     public void takeDamage(int damage){
+        // TODO Ska vi inte använda decreaseHP funktionen här istället?
         this.hp-=damage;
 
     }
 
-    public void refillHP(){
+// Refills hp when healing
+    public void refillHP(int amountToRefill){
+        if((this.hp += amountToRefill) > maxHp){
+            this.hp = maxHp;
+        }else{
+            this.hp += amountToRefill;
+        }
 
     }
 

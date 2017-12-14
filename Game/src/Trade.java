@@ -15,9 +15,9 @@ public class Trade {
     }
 
     public int sellItem(){
-
+        return 0;
     }
-    public Item buyItem(){
+    //public Item buyItem(){
 
-    }
+    //}
 }

@@ -1,4 +1,4 @@
-public class Object {
+public abstract class Object {
 
     private String name;
     private int x;

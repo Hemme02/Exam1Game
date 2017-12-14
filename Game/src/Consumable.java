@@ -1,12 +1,11 @@
 public class Consumable {
 
     private String type;
-    private String slot;
-    private int armour;
+    private int refill;
 
-    public Consumable(String type, String slot, int armour) {
+    public Consumable(String type, int refill) {
         this.type = type;
-        this.slot = slot;
-        this.armour = armour;
+        this.refill = refill;
     }
+
 }

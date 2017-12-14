@@ -1,10 +1,12 @@
 public class Armour {
-
     private String type;
-    private int refill;
+    private String slot;
+    private int armourValue;
 
-    public Armour(String type, int refill) {
+    // TODO Tror dessa ska vara på armour :)
+    public Armour(String type, String slot, int armourValue) {
         this.type = type;
-        this.refill = refill;
+        this.slot = slot;
+        this.armourValue = armourValue;
     }
 }

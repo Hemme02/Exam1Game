@@ -9,9 +9,9 @@ public class Bank {
     }
 
     public boolean addToStorage(){
-
+        return true;
     }
     public boolean removeFromStorage(){
-
+        return true;
     }
 }

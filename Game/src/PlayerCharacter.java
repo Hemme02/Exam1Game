@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class PlayerCharacter extends Character{
-    private Item head;
-    private Item arms;
-    private Item legs;
-    private Item chest;
-    private Item boots;
-    private Item leftHand;
-    private Item rightHand;
+    private Armour head;
+    private Armour arms;
+    private Armour legs;
+    private Armour chest;
+    private Armour boots;
+    private Weapon leftHand;
+    private Weapon rightHand;
 
     public PlayerCharacter(String name, int level, int experience, int armour, int money, int maxHp, int hp, char gender, String race) {
         super(name, level, experience, armour, money, maxHp, hp, gender, race);
@@ -69,11 +69,90 @@ public class PlayerCharacter extends Character{
     }
 
     public void equipItem(Armour armourToEquip){
-        // TODO Fixa equip
+        String slotToEquip = armourToEquip.getSlot();
+        if(!(armourToEquip.getLevelRequirement() > this.getLevel())) {
+            if (slotToEquip.equals("head")) {
+                if (this.head != null) {
+                    addItem(head);
+                    head = armourToEquip;
+                } else {
+                    head = armourToEquip;
+                }
+            } else if (slotToEquip.equals("arms")) {
+                if (this.arms != null) {
+                    addItem(arms);
+                    arms = armourToEquip;
+                } else {
+                    arms = armourToEquip;
+                }
+            } else if (slotToEquip.equals("legs")) {
+                if (this.legs != null) {
+                    addItem(legs);
+                    legs = armourToEquip;
+                } else {
+                    legs = armourToEquip;
+                }
+            } else if (slotToEquip.equals("chest")) {
+                if (this.chest != null) {
+                    addItem(chest);
+                    chest = armourToEquip;
+                } else {
+                    chest = armourToEquip;
+                }
+            } else if (slotToEquip.equals("boots")) {
+                if (this.boots != null) {
+                    addItem(boots);
+                    boots = armourToEquip;
+                } else {
+                    boots = armourToEquip;
+                }
+            }
+        }
+
     }
 
     public void equipWeapon(Weapon weaponToEquip){
-       // TODO Fixa equip
+       if(!(weaponToEquip.getLevelRequirement() > this.getLevel())){
+            if(weaponToEquip.getType().equals("Shield")){
+                if(this.rightHand != null){
+                    addItem(rightHand);
+                    rightHand = weaponToEquip;
+                }else{
+                    rightHand = weaponToEquip;
+                }
+            }
+            else if(weaponToEquip.getType().equals("One hand")){
+                if(this.leftHand != null){
+                    addItem(leftHand);
+                    leftHand = weaponToEquip;
+                }else{
+                    leftHand = weaponToEquip;
+                }
+            }
+            else if(weaponToEquip.isTwoHand()){
+                if(this.rightHand != null){
+                    addItem(rightHand);
+                }
+                if(this.leftHand != null){
+                    addItem(leftHand);
+                    leftHand = weaponToEquip;
+                }else{
+                    leftHand = weaponToEquip;
+                }
+            }
+
+       }
+    }
+
+    public void addArmour(){
+        ArrayList<Armour> armorList= new ArrayList<>();
+        this.setArmour(head.getArmourValue()+arms.getArmourValue()+chest.getArmourValue()+legs.getArmourValue()+boots.getArmourValue());
+
+    }
+
+    public void addMinMaxDamage(){
+        this.
+
     }
 
     public Item getHead() {

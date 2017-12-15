@@ -16,7 +16,6 @@ public abstract class Item {
 
     public void increaPrice(int increment){
         this.price+=increment;
-
     }
 
     public void decreaPrice(int decrement){
@@ -25,14 +24,7 @@ public abstract class Item {
         }
         else{
             this.price-=decrement;
-
         }
-
-    }
-    //TODO
-    public void passive(){
-       // Ta bort?
-
     }
 
     public int getLevelRequirement() {

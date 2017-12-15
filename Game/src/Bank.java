@@ -13,5 +13,5 @@ public class Bank {
     }
     public boolean removeFromStorage(){
         return true;
-    }
+    }// Funktioner?
 }

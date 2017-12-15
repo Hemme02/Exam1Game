@@ -33,7 +33,7 @@ public class Skill {
 
     }
 
-    //TODO Förslag på level up
+    //TODO Förslag på level up, Variablar istället för hårdkodat
     public void levelUp(){
         increaCost(10);
         increaMax(50);

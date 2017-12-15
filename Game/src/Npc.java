@@ -9,8 +9,8 @@ public class Npc extends Character {
     private int range;
     private ArrayList<Skill> listOfSkills;
 
-    public Npc(String name, int level, int experience, int armour, int money, int hp, char gender, String race, ArrayList<Item> listOfItems, ArrayList<Item> listOfEquipedItems, boolean friendly, int rarity, int damageMax, int damageMin, int range, ArrayList<Skill> listOfSkills) {
-        super(name, level, experience, armour, money, hp, gender, race, listOfItems, listOfEquipedItems);
+    public Npc(String name, int level, int experience, int armour, int money, int hp, char gender, String race, boolean friendly, int rarity, int damageMax, int damageMin, int range, ArrayList<Skill> listOfSkills) {
+        super(name, level, experience, armour, money, hp, gender, race);
         this.friendly = friendly;
         this.rarity = rarity;
         this.damageMax = damageMax;

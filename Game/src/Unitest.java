@@ -19,5 +19,8 @@ public class Unitest {
         Market market = new Market(items);
         Admin admin = new Admin(account1, market);
         admin.getInterfaceToAdmin().setPrice(10);
+        ArrayList<Skill> skills = new ArrayList<>();
+        Npc npc = new Npc("Kim", 1, 1, 1, 1, 1, 'M', "Human", true, 1, 1, 1, 1, skills);
     }
+
 }

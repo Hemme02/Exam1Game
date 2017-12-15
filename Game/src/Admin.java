@@ -16,3 +16,4 @@ public class Admin {
         return interfaceToAdmin;
     }
 }
+// Banken också

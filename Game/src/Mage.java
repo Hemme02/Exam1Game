@@ -17,7 +17,6 @@ public class Mage {
 
     }
 
-    // TODO Ska den inte kunna bli 0?
     public boolean decreaMana(int value){
         if(mana-value<=0){
             return false;

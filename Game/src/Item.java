@@ -33,6 +33,7 @@ public class Item {
     }
     //TODO
     public void passive(){
+       // Ta bort?
 
     }
 

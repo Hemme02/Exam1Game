@@ -1,29 +1,27 @@
 import java.util.ArrayList;
 
-public class Hunter extends Character {
+public class Hunter extends PlayerCharacter {
 
     private int maxStamina;
     private int stamina;
     private ArrayList<Skill> listOfSkills;
 
-    public Hunter(String name, int level, int experience, int armour, int money, int hp, char gender, String race, ArrayList<Item> listOfItems, ArrayList<Item> listOfEquipedItems, int maxStamina, ArrayList<Skill> listOfSkills) {
-        super(name,level, experience, armour, money, hp, gender, race, listOfItems, listOfEquipedItems);
+    public Hunter(String name, int level, int experience, int armour, int money, int maxHp, int hp, char gender, String race, int maxStamina) {
+        super(name, level, experience, armour, money, maxHp, hp, gender, race);
         this.maxStamina = maxStamina;
-        this.stamina = this.maxStamina;
-        this.listOfSkills = listOfSkills;
+        this.stamina = maxStamina;
+        this.listOfSkills = new ArrayList<>();
     }
-
-
 
     public void addSkill(Skill skilltoadd){
         listOfSkills.add(skilltoadd);
 
     }
     public boolean decreaStamina(int value){
-        if(stamina-value<=0){
+        if(stamina - value < 0){
             return false;
         }else{
-            stamina-=value;
+            stamina -= value;
             return true;
         }
 
@@ -33,7 +31,6 @@ public class Hunter extends Character {
 
     }
 
-    //TODO
     public void refillStamina(int amountToRefill){
         if((this.stamina += amountToRefill) > maxStamina){
             this.stamina = maxStamina;

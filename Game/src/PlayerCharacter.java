@@ -1,92 +1,107 @@
 import java.util.ArrayList;
 
 public class PlayerCharacter extends Character{
-    private ArrayList<Item> listOfItems;
-    private ArrayList<Item> listOfEquipedItems;
+    private Item head;
+    private Item arms;
+    private Item legs;
+    private Item chest;
+    private Item boots;
+    private Item leftHand;
+    private Item rightHand;
 
-    public PlayerCharacter(String name, int level, int experience, int armour, int money, int maxHp, char gender, String race, ArrayList<Item> listOfItems, ArrayList<Item> listOfEquipedItems) {
-        super(name, level, experience, armour, money, maxHp, gender, race);
+    public PlayerCharacter(String name, int level, int experience, int armour, int money, int maxHp, int hp, char gender, String race) {
+        super(name, level, experience, armour, money, maxHp, hp, gender, race);
     }
 
-    //Add one level to the player if the play issent level 60
     public void gainLevel(){
-        if(this.level !=60) {
-            this.level += 1;
+        if(this.getLevel() !=60) {
+            super.setLevel(this.getLevel()+1);
         }
     }
 
-    //Adds exp if expGain exceeds the limit it will add and level and add the remaining exp
     public void gainExperience(int expGain){
         int expleft=0;
+        int playerExp = this.getExperience();
 
-        if(this.level==60) {
+        if(this.getLevel()==60) {
             return;
         }
 
-        if(this.experience+expGain>10000) {
-
-            expleft = experience + expGain - 10000;
+        if(playerExp+expGain>10000) {
+            expleft = playerExp + expGain - 10000;
             gainLevel();
-            // TODO Ska vi lägga tillbaka det som är över 10000 exp på experience. T.ex. om man har 8000 exp och tjänar 4000
-            // TODO Ska man då ha 2000 efter att man levlat upp? Då borde vi lägga till koden nedan.
-
-            // TODO this.experience = expleft;
+            this.setExperience(expleft);
         }
         else{
-            this.experience+=expGain;
+            this.setExperience(playerExp + expGain);
         }
 
+    }
+
+    //Increase money
+    public void increaMoney(int increase){
+        this.setMoney(this.getMoney() + increase);
+
+    }
+
+    //Decrease money if you have enough
+    public boolean decreaMoney(int decrease) {
+        if (this.getMoney() - decrease < 0) {
+            return false;
+        } else {
+            this.setMoney(this.getMoney() - decrease);
+            return true;
+        }
+    }
+
+    public void increaMaxHP(int increase){
+        this.setMaxHp(this.getMaxHp()+increase);
+    }
+
+    //Checks if item is equipped or in backpack then removes it
+    public void removeItem(Item itemToRemove) {
+        this.listOfItems.remove(itemToRemove);
     }
 
     //Add one item to the inventory
     public void addItem(Item itemToAdd){
         this.listOfItems.add(itemToAdd);
-
     }
 
-    //Checks If the item is in the inventory and the character dont have to same type equipped and if the levelREQ is reached it adds it to the equipped list
-//TODO visst ska man använda == när vi jämnför här? Ska vi ha ITEM type så man inte kan equippa samma itemTYPE?
-
-    public void equipItem(Item itemToEquip){
-        int itemlevel=itemToEquip.getLevelRequirement();
-        if (itemlevel<this.level){
-            return;
-        }
-
-        //TODO Varför har vi denna forloop? Om jag fattar rätt så kör den ju bara funktionen igen. Blir en infinityloop.
-        for(int i=0;i<listOfItems.size();i++){
-            if(listOfItems.get(i)==itemToEquip){
-                equipItem(itemToEquip);
-                return;
-
-            }
-
-        }
+    public void equipItem(Armour armourToEquip){
+        // TODO Fixa equip
     }
 
-    //Increase money
-    public void increaMoney(int increase){
-        this.money+=increase;
-
+    public void equipWeapon(Weapon weaponToEquip){
+       // TODO Fixa equip
     }
 
-    //Decrease money if you have enough
-    public boolean decreaMoney(int decrease){
-        if(this.money-decrease<0){
-            return false;
-        }
-        else{
-            this.money-=decrease;
-            return true;
-        }
-
+    public Item getHead() {
+        return head;
     }
 
-    //Increase hp of your character
-    //TODO Har vi något max hp? och hur markerar vi att någon är död?
-    public void increaMaxHP(int increase){
-        this.maxHp+=increase;
+    public Item getArms() {
+        return arms;
+    }
 
+    public Item getLegs() {
+        return legs;
+    }
+
+    public Item getChest() {
+        return chest;
+    }
+
+    public Item getBoots() {
+        return boots;
+    }
+
+    public Item getLeftHand() {
+        return leftHand;
+    }
+
+    public Item getRightHand() {
+        return rightHand;
     }
 
 }

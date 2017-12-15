@@ -1,15 +1,16 @@
 import java.util.ArrayList;
 
-public class Mage {
+public class Mage extends PlayerCharacter{
 
     private int mana;
     private int maxMana;
     private ArrayList<Skill> listOfSkills;
 
-    public Mage(int maxMana, ArrayList<Skill> listOfSkills) {
+    public Mage(String name, int level, int experience, int armour, int money, int maxHp, int hp, char gender, String race, int maxMana) {
+        super(name, level, experience, armour, money, maxHp, hp, gender, race);
         this.maxMana = maxMana;
         this.mana = maxMana;
-        this.listOfSkills = listOfSkills;
+        this.listOfSkills = new ArrayList<>();
     }
 
     public void addSkill(Skill skilltoadd){
@@ -30,7 +31,7 @@ public class Mage {
         this.maxMana+=value;
 
     }
-    //TODO
+
     public void refillMana(int amountToRefill){
         if((this.mana += amountToRefill) > maxMana){
             this.mana = maxMana;

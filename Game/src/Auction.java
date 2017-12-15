@@ -15,8 +15,6 @@ public class Auction extends Trade{
 
     // Buyer ?
 
-
-
     public boolean bid(Character character, int newBid){
         // character remove money
         // Old highbid get money back

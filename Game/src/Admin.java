@@ -1,11 +1,13 @@
 public class Admin {
 
     private Account account;
-    private MarketToAdmin interfaceToAdmin;
+    private MarketToAdmin marketInterfaceToAdmin;
+    private BankToAdmin bankInterfaceToAdmin;
 
-    public Admin(Account account, MarketToAdmin interfaceToAdmin) {
+    public Admin(Account account, MarketToAdmin marketInterfaceToAdmin,BankToAdmin bankInterfaceToAdmin) {
         this.account = account;
-        this.interfaceToAdmin = interfaceToAdmin;
+        this.marketInterfaceToAdmin = marketInterfaceToAdmin;
+        this.bankInterfaceToAdmin = bankInterfaceToAdmin;
     }
 
     public Account getAccount() {
@@ -13,7 +15,11 @@ public class Admin {
     }
 
     public MarketToAdmin getInterfaceToAdmin() {
-        return interfaceToAdmin;
+        return marketInterfaceToAdmin;
+    }
+
+    public BankToAdmin bankInterfaceToAdmin() {
+        return bankInterfaceToAdmin;
     }
 }
-// Banken också
+

@@ -1,5 +1,7 @@
 public interface MarketToAdmin {
-    void changeItem(Item item);
-    void setPrice(int newPrice);
-
+    void addItem(Item item);
+    void changePrice(int newPrice,Item itemToChange);
+    void marketSellItem(PlayerCharacter buyer);
+    void marketBuyItem(PlayerCharacter seller, Item itemToBuy);
+    void removeItem(Item itemToAdd);
 }

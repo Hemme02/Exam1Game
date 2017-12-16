@@ -11,16 +11,21 @@ public class Market extends Trade implements MarketToAdmin{
 
 
 
+
     @Override
-    public void changeItem(Item itemToChange){
+    public void addItem(Item itemToAdd){
+        listOfItems.add(itemToAdd);
 
     }
 
     @Override
-    public void setPrice(int newPrice){         //har inte denna price från trade eller kan man ändra?
+    public void changePrice(int newPrice,Item itemToChange){
+        listOfItems.get(0).setPrice(newPrice);
+
 
     }
-
+    //TODO ska jag kolla i listan om itemet finns där eller behövs det verkligen?
+    @Override
     public void marketSellItem(PlayerCharacter buyer){
         if(buyer.getMoney()>=this.getPrice()){
             buyer.decreaMoney(this.getPrice());
@@ -29,8 +34,15 @@ public class Market extends Trade implements MarketToAdmin{
         }
 
     }
-
+    @Override
     public void marketBuyItem(PlayerCharacter seller, Item itemToBuy){
+        seller.increaMoney(itemToBuy.getPrice());
+        seller.getListOfItems().remove(itemToBuy);
+
+    }
+    @Override
+    public void removeItem(Item itemToAdd){
+        listOfItems.remove(itemToAdd);
 
     }
 }

@@ -3,10 +3,10 @@ import java.util.ArrayList;
 public class Storage {
 
     private int size;
-    private Character character;
+    private PlayerCharacter character;
     private ArrayList<Item> listOfItems;
 
-    public Storage(int size, Character character) {
+    public Storage(int size, PlayerCharacter character) {
         this.size = size;
         this.character = character;
         this.listOfItems = new ArrayList<>();
@@ -34,5 +34,9 @@ public class Storage {
 
     public ArrayList<Item> getListOfItems() {
         return listOfItems;
+    }
+
+    public PlayerCharacter getCharacter() {
+        return character;
     }
 }

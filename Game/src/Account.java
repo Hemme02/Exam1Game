@@ -47,11 +47,9 @@ public class Account {
 
     public void addFriend(Account friendAccount){
         listOfFriends.add(friendAccount);
-
     }
 
     public void changePassword(String newPassword){
-
         this.password = newPassword;
     }
 

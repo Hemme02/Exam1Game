@@ -5,14 +5,14 @@ public class Map {
     private final int x;
     private final int y;
     private final int z;
-    private ArrayList<ObjectOnMap> listOfObjects;
+    private ArrayList<ObjectOnMap> listOfObjectsOnMap;
     private ArrayList<MovableObject> listOfMovableObjects;
 
     public Map(int x, int y, int z) {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.listOfObjects = new ArrayList<>();
+        this.listOfObjectsOnMap = new ArrayList<>();
         this.listOfMovableObjects = new ArrayList<>();
     }
 
@@ -23,14 +23,14 @@ public class Map {
         }
     }
 
-    public void addObject(ObjectOnMap objectToAdd){
+    public void addObjectOnMap (ObjectOnMap objectToAdd){
         if(objectToAdd instanceof Tree){
             Tree tree = (Tree) objectToAdd;
-            listOfObjects.add(tree);
+            listOfObjectsOnMap.add(tree);
         }
         else if(objectToAdd instanceof Stone){
             Stone stone = (Stone) objectToAdd;
-            listOfObjects.add(stone);
+            listOfObjectsOnMap.add(stone);
         }
     }
 }

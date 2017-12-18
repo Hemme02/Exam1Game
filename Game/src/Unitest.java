@@ -10,6 +10,7 @@ public class TestAccount {
     @Test
     public void testAccount(){
         Account account = new Account("123abc", "ola@gmail.se");
+        account.createCharacter();
         account.selectCharacter();
         account.deleteCharacter();
         account.changePassword();
@@ -19,7 +20,7 @@ public class TestAccount {
 public class TestAdmin{
     @Test
     public void testAdmin(){
-        Admin admin = new Admin("ola@gmail.se");
+        Admin admin = new Admin("ola1@gmail.se");
         admin.getAccount();
     }
 }

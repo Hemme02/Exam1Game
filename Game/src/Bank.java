@@ -33,4 +33,19 @@ public class Bank implements BankToAdmin {
         }
         return false;
     }
+    public boolean removeStorage(PlayerCharacter whichPlayerStorage){
+        for(int i=0;i<listOfStorages.size();i++){
+            if(listOfStorages.get(i).getCharacter()==whichPlayerStorage){
+                listOfStorages.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean addStorage(PlayerCharacter whichPlayer,int size){
+       Storage test =new Storage(size,whichPlayer);
+       return true;
+    }
+
+
 }

@@ -26,6 +26,7 @@ public class Storage {
     }
     public void changeSizeOfStorage(int newSize){
         size = newSize;
+
     }
 
     public int getSize() {

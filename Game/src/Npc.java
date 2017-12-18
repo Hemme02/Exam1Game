@@ -1,16 +1,19 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Npc extends Character {
 
     private boolean friendly;
     private int rarity;
     private ArrayList<Skill> listOfSkills;
+    private ArrayList<String> standardFraces;
 
     public Npc(String name, int level, int experience, int armour, int money, int maxHp, int hp, char gender, String race, boolean friendly, int rarity, ArrayList<Skill> listOfSkills) {
         super(name, level, experience, armour, money, maxHp, hp, gender, race);
         this.friendly = friendly;
         this.rarity = rarity;
         this.listOfSkills = listOfSkills;
+        this.standardFraces = new ArrayList<>();
     }
 
     public void deadNpc(PlayerCharacter player){
@@ -39,12 +42,26 @@ public class Npc extends Character {
             target.increaMoney(this.getMoney());
     }
 
-    //TODO Vet inte riktigt hur vi ska göra med denna
+    public void addFrace(String newFrace){
+        standardFraces.add(newFrace);
+    }
+
+    public void removeFrace(String fraceToRemove){
+        standardFraces.remove(fraceToRemove);
+    }
+
     public String speak(){
-    return "Hej";
+        Random randomFrace = new Random();
+        int index = randomFrace.nextInt(standardFraces.size());
+        return standardFraces.get(index);
+
     }
 
     public boolean isFriendly() {
         return friendly;
+    }
+
+    public int getRarity() {
+        return rarity;
     }
 }

@@ -33,17 +33,48 @@ public class Skill {
 
     }
 
-    //TODO Förslag på level up, Variablar istället för hårdkodat
-    public void levelUp(){
-        increaCost(10);
-        increaMax(50);
-        increaMin(50);
-        increaRange(5);
+    public void levelUp(int increaseCost, int increaseMax, int increaseMin, int increaseRange){
+        this.increaCost(increaseCost);
+        this.increaMax(increaseMax);
+        this.increaMin(increaseMin);
+        this.increaRange(increaseRange);
         this.level+=1;
 
     }
     public void increaRange(int value){
         this.range+=value;
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public boolean isDamage() {
+        return damage;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public int getCooldown() {
+        return cooldown;
+    }
+
+    public int getDamageMax() {
+        return damageMax;
+    }
+
+    public int getDamageMin() {
+        return damageMin;
     }
 }

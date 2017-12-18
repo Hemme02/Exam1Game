@@ -108,7 +108,7 @@ public class PlayerCharacter extends Character{
                 }
             }
         }
-
+        addArmour();
     }
 
     public void equipWeapon(Weapon weaponToEquip){
@@ -142,16 +142,16 @@ public class PlayerCharacter extends Character{
             }
 
        }
+       addMinMaxDamage();
     }
 
     public void addArmour(){
-        ArrayList<Armour> armorList= new ArrayList<>();
         this.setArmour(head.getArmourValue()+arms.getArmourValue()+chest.getArmourValue()+legs.getArmourValue()+boots.getArmourValue());
-
     }
 
     public void addMinMaxDamage(){
-        this.
+        this.setMinDamage(leftHand.getDamageMin());
+        this.setMaxDamage(leftHand.getDamageMax());
 
     }
 

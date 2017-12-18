@@ -5,7 +5,7 @@ public class Map {
     private final int x;
     private final int y;
     private final int z;
-    private ArrayList<Object> listOfObjects;
+    private ArrayList<ObjectOnMap> listOfObjects;
     private ArrayList<MovableObject> listOfMovableObjects;
 
     public Map(int x, int y, int z) {
@@ -23,9 +23,14 @@ public class Map {
         }
     }
 
-    public void addObject(){
-        // TODO Object downcasting?
-
-
+    public void addObject(ObjectOnMap objectToAdd){
+        if(objectToAdd instanceof Tree){
+            Tree tree = (Tree) objectToAdd;
+            listOfObjects.add(tree);
+        }
+        else if(objectToAdd instanceof Stone){
+            Stone stone = (Stone) objectToAdd;
+            listOfObjects.add(stone);
+        }
     }
 }

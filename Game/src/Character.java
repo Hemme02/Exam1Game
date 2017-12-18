@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Character {
 
@@ -32,8 +33,20 @@ public class Character {
         this.alive = true;
     }
 
-    public void useSkill(){
-
+    public void useSkill(Skill skillToUse, Character target){
+        if(skillToUse.isDamage()){
+            Random randomDamage = new Random();
+            int Low = skillToUse.getDamageMin();
+            int High = skillToUse.getDamageMax()+1;
+            int damageToTarget = randomDamage.nextInt(High-Low) + Low;
+            target.takeDamage(damageToTarget);
+        }else{
+            Random randomHealing = new Random();
+            int Low = skillToUse.getDamageMin();
+            int High = skillToUse.getDamageMax()+1;
+            int healingToTarget = randomHealing.nextInt(High-Low) + Low;
+            target.refillHP(healingToTarget);
+        }
     }
 
     //Decrease hp if you have enough else you are dead

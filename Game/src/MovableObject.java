@@ -1,4 +1,4 @@
-public class MovableObject extends Object{
+public class MovableObject extends ObjectOnMap{
 
     private int areaRange;
     private boolean alive;
